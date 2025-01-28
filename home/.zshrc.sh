@@ -55,12 +55,20 @@ alias cl='clear'
 # Git short-cuts.
 alias g='git'
 alias ga='git add'
-alias gr='git rm'
 alias gf='git fetch'
 alias gu='git pull'
+alias gp='git push'
 alias gs='git status --short'
 alias gd='git diff'
-alias gdisc='git discard'
+alias gds='git diff --staged'
+alias gcl='git clone'
+alias gch='git checkout'
+alias gbr='git branch'
+alias gbrcl='git checkout --orphan'
+alias gbrd='git branch -D'
+alias gback='git reset HEAD~1'
+alias gdisc='git reset --hard HEAD'
+alias glast='g show'
 
 function gc() {
   args=$@
@@ -71,6 +79,11 @@ function gcam() {
   args=$@
   ndate=$(date -u +%Y-%m-%dT%H:%M:%S%z)
   GIT_AUTHOR_DATE=$ndate GIT_COMMITTER_DATE=$ndate git commit --amend -m "$args"
+}
+function grmtag() {
+  tag=$1
+  git tag -d $tag
+  git push origin ":refs/tags/${tag}"
 }
 
 function cherry() {
@@ -99,22 +112,18 @@ function cherry() {
   done
 }
 
-alias gp='git push'
 
 function gcp() {
   title="$@"
-  git commit -am $title && git push -u origin
+  ndate=$(date -u +%Y-%m-%dT%H:%M:%S%z)
+  GIT_AUTHOR_DATE=$ndate GIT_COMMITTER_DATE=$ndate git commit -am $title && git push -u origin
 }
-alias gcl='git clone'
-alias gch='git checkout'
-alias gbr='git branch'
-alias gbrcl='git checkout --orphan'
-alias gbrd='git branch -D'
 function gl() {
   count=$1
   [[ -z "$1" ]] && count=10
   git --no-pager log --graph --no-merges --max-count=$count
 }
+
 
 # ===============
 # Dev short-cuts.
@@ -125,30 +134,14 @@ alias ni='npm install'
 alias nr='npm run'
 alias nt='npm test'
 alias nrb='npm run build'
-alias nrl='npm run lint'
-alias pack='npm pack --dry-run'
-function npm-init() {
-  local dir="$1"
-  if [ -z "$dir" ]; then
-    echo "First argument - dir name"
-    return 0
-  fi
-  mkdir $dir
-  cd $dir
-  npm init -y
-  touch a.mjs
-}
-# if (( $+commands[pnpm] )); then
-#   alias npm=pnpm
-# fi
+alias nrf='npm run format'
+alias npm-dry='npm pack --dry-run'
+alias jsr-dry='jsr publish --dry-run'
 
-alias serve='python3 -m http.server'
+alias serve='python3 -m http.server --bind 127.0.0.1'
 alias server='serve'
-
-alias bex='bundle exec' # Ruby
 alias stats='sort | uniq -c | sort -r'
-alias git-stats='git log --no-merges --pretty=format:"%ae" | stats'
-# Lists the ten most used commands.
+alias git-emails='git log --no-merges --pretty=format:"%ae" | stats'
 alias history-stats="history 0 | awk '{print \$2}' | stats | head"
 # Checks whether connection is up.
 alias net="ping google.com | grep -E --only-match --color=never '[0-9\.]+ ms'"
@@ -266,7 +259,7 @@ function rams() {
     else
       echo -en "No active processes matching pattern '${fg[blue]}${app}${reset_color}'\r"
     fi
-    sleep 1
+    sleep 0.1
   done
 }
 

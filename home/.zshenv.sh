@@ -84,6 +84,8 @@ unset BROWSER
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_AUTO_UPDATE_SECS='2592000'
 export HOMEBREW_NO_ENV_HINTS=1
+export MSHOULD_QUIET=1
+export MSHOULD_FAST=1
 export GPG_TTY=$(tty) # For git commit signing
 gitssh="$HOME/.ssh/git"
 if [[ -f $gitssh ]]; then
@@ -91,11 +93,7 @@ if [[ -f $gitssh ]]; then
 fi
 unset gitssh
 
-
-if (( $+commands[zed] )); then
-  export EDITOR=$commands[zed]
-  export VISUAL=$commands[zed]
-elif (( $+commands[code] )); then
+if (( $+commands[code] )); then
   export EDITOR=$commands[code]
   export VISUAL=$commands[code]
 else

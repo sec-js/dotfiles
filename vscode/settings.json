@@ -1,41 +1,31 @@
 {
-  "editor.fontSize": 14,
-  "editor.fontLigatures": true,
+  "editor.fontSize": 16,
+  "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'calt', 'dlig'",
   "debug.console.fontSize": 16,
   "terminal.integrated.fontSize": 14,
-  "editor.fontFamily": "Comic Mono, Fantasque Sans Mono, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "'Monaspace Xenon', 'Courier New', monospace",
   "editor.tabSize": 2,
-
   "editor.bracketPairColorization.enabled": true,
   "editor.minimap.enabled": false,
-
-  // Trim whitespace
-  "files.trimTrailingWhitespace": true,
-
   // Wrap lines at 100 characters
   "editor.wordWrap": "wordWrapColumn",
   "editor.wordWrapColumn": 100,
   "html.format.wrapLineLength": 100,
-
   // Prettier formatter: single quotes, 100 chars
   "prettier.singleQuote": true,
   "prettier.printWidth": 100,
-
   // git
   "git.confirmSync": false,
   "git.autorefresh": false,
   "diffEditor.renderSideBySide": false,
-
   // Do not show files
   "files.exclude": {
-    "**/lib": true,
-    "**/node_modules": true,
     "**/package-lock.json": true
   },
-
   // F-off telemetry
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
+  "telemetry.telemetryLevel": "off",
   "update.mode": "none",
   "extensions.autoUpdate": false,
   "update.showReleaseNotes": false,
@@ -43,16 +33,13 @@
   "workbench.settings.enableNaturalLanguageSearch": false,
   "workbench.enableExperiments": false,
   "extensions.ignoreRecommendations": true,
-
   "explorer.openEditors.visible": 10,
   "explorer.confirmDelete": false,
-  "javascript.implicitProjectConfig.checkJs": true,
   "editor.renderWhitespace": "selection",
   "editor.renderControlCharacters": false,
   "window.openFilesInNewWindow": "default",
   "[javascript]": {
-    // "editor.defaultFormatter": "vscode.typescript-language-features"
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[typescript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
@@ -61,10 +48,9 @@
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "workbench.editor.untitled.hint": "hidden",
   "workbench.startupEditor": "none",
   "workbench.editor.languageDetection": false,
-  "workbench.preferredDarkColorTheme": "Ayu Dark",
+  "workbench.preferredDarkColorTheme": "Monokai Pro (Filter Spectrum)",
   "window.autoDetectColorScheme": true,
   "editor.unicodeHighlight.nonBasicASCII": false,
   "[jsonc]": {
@@ -72,7 +58,36 @@
   },
   "breadcrumbs.enabled": false,
   "workbench.preferredLightColorTheme": "Iceberg Light",
-  "workbench.iconTheme": "Monokai Pro (Filter Machine) Monochrome Icons",
-  "git.enabled": false,
-  "workbench.colorTheme": "Iceberg Light"
+  "workbench.colorTheme": "Iceberg Light",
+  "editor.lineNumbers": "off",
+  "editor.folding": false,
+  "editor.glyphMargin": false,
+  "editor.guides.indentation": false,
+  "prettier.enable": false,
+  "editor.rulers": [],
+  "markdown.preview.fontSize": 18,
+  "files.trimTrailingWhitespace": true,
+  "git.openRepositoryInParentFolders": "always",
+  "workbench.editorAssociations": {
+    "*.epub": "default"
+  },
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "zig.zls.enabled": true,
+  "workbench.editor.empty.hint": "hidden",
+  "editor.inlayHints.enabled": "off",
+  "print.colourScheme": "A11 Y",
+  "markdown.preview.fontFamily": "SF Mono, SFMono, -apple-system, sans-serif",
+  "print.fontSize": "8pt",
+  "window.commandCenter": false,
+  "js/ts.implicitProjectConfig.checkJs": true,
+  "haskell.serverEnvironment": {
+    "PATH": "${HOME}/.ghcup/bin:$PATH"
+  },
+  "haskell.manageHLS": "GHCup",
+  "editor.maxTokenizationLineLength": 50000,
+  "workbench.settings.applyToAllProfiles": [
+    "editor.maxTokenizationLineLength"
+  ],
+  "github.gitAuthentication": false,
+  "print.editorTitleMenuButton": false
 }
