@@ -1,13 +1,6 @@
 #!/usr/bin/env sh
 
-# git-release(1)
-# Usage:
-# git release 1.5.2
-
-# Originally taked from
-# [visionmedia/git-extras](https://github.com/visionmedia/git-extras)
-# (MIT License).
-
+# git-release(1). Usage: git release 1.2.3. Taken from visionmedia/git-extras (MIT license).
 hook() {
   local hook=".git/hooks/$1.sh"
   if test -f $hook; then
@@ -19,10 +12,10 @@ hook() {
 if test $# -gt 0; then
   echo "... releasing $1"
   ndate=$(date -u +%Y-%m-%dT%H:%M:%S%z)
-  GIT_AUTHOR_DATE=$ndate GIT_COMMITTER_DATE=$ndate git commit -a -m "Release $1." && git tag $1 \
+  GIT_AUTHOR_DATE=$ndate GIT_COMMITTER_DATE=$ndate git commit -a -m "Release $1." \
+    && GIT_AUTHOR_DATE=$ndate GIT_COMMITTER_DATE=$ndate git tag -m '' $1 \
     && git push \
-    && git push --tags \
-    # && test -f 'package.json' && npm publish
+    && git push --tags
   echo "... complete"
 else
   echo "tag required" 1>&2 && exit 1

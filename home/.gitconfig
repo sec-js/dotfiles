@@ -3,31 +3,21 @@
   email = paul@paulmillr.com
 [commit]
   gpgsign = true
-[github]
-  user = paulmillr
+[tag]
+	gpgSign = true
 [alias]
-  discard = reset --hard HEAD
   ch = checkout
-  sign = commit -S -m
-  signtag = 'tag -s -m ""'
   d = diff
-
-  graph = log --graph
-  last = log -n 10
   whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
   rmtag = "!sh -c 'git tag -d $1; git push origin :refs/tags/$1'"
-
   release   = !sh "$HOME/Developer/personal/dotfiles/git-extras/git-release.sh"
-  sign-release   = !sh "$HOME/Developer/personal/dotfiles/git-extras/git-sign-release.sh"
   pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1; } ; f"
-  cleanup = !ruby "$HOME/Developer/personal/dotfiles/git-extras/git-cleanup.rb"
-
+[init]
+  defaultBranch = main
 [push]
   default = simple
-
-[color]
-  ui = true
-
+[pull]
+  rebase = true
 [core]
   excludesfile = ~/.gitignore
   # pager = diff-so-fancy | less --tabs=4 -RFX
@@ -41,22 +31,6 @@
   # light = true
 [diff]
   colorMoved = default
-[format]
-  pretty = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset %C(bold yellow)%GK%Creset
-  graph = true
-[advice]
-  statusHints = false
-[log]
-  abbrevCommit = true
-[mergetool]
-  keepBackup = false
-[pull]
-  rebase = true
-[filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
 [color "diff"]
   meta = 11
   frag = magenta bold
@@ -64,7 +38,18 @@
   old = red bold
   new = green bold
   whitespace = red reverse
+[format]
+  pretty = %Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)%an%Creset
+[advice]
+  statusHints = false
+[log]
+  date = human
 [merge]
   conflictstyle = diff3
-[init]
-  defaultBranch = main
+[mergetool]
+  keepBackup = false
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true

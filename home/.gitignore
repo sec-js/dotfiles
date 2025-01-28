@@ -22,6 +22,8 @@ yarn.lock
 .yarn
 package-lock.json
 pnpm-lock.yaml
+bun.lockb
+deno.lock
 /.nyc_output/
 
 # Other
