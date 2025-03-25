@@ -123,7 +123,21 @@ function gl() {
   [[ -z "$1" ]] && count=10
   git --no-pager log --graph --no-merges --max-count=$count
 }
-
+function git-dates() {
+  git log --pretty="format:%al---%ad---%cd" --date=format:'%Y-%m-%d %H:%M:%S%z' | python3 <(cat <<END
+import sys
+res = []
+for line in sys.stdin:
+  (m, ad, cd) = line.strip().split('---')
+  if ad == cd:
+    res.append('{}: {}'.format(m, ad))
+  else:
+    res.append('{}: {} {}'.format(m, ad, cd))
+for item in res:
+  print(item)
+END
+)
+}
 
 # ===============
 # Dev short-cuts.
