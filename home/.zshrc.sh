@@ -50,8 +50,6 @@ else
   alias pgrep='pgrep -fl'
 fi
 
-alias cl='clear'
-
 # Git short-cuts.
 alias g='git'
 alias ga='git add'
@@ -86,7 +84,9 @@ function grmtag() {
   git push origin ":refs/tags/${tag}"
 }
 
-function cherry() {
+alias cl='clear'
+
+function gcherry() {
   is_range=''
   case "$1" in # `sh`-compatible substring.
     *\.*)
@@ -123,7 +123,7 @@ function gl() {
   [[ -z "$1" ]] && count=10
   git --no-pager log --graph --no-merges --max-count=$count
 }
-function git-dates() {
+function git_dates() {
   git log --pretty="format:%al---%ad---%cd" --date=format:'%Y-%m-%d %H:%M:%S%z' | python3 <(cat <<END
 import sys
 res = []
@@ -151,6 +151,7 @@ alias nrb='npm run build'
 alias nrf='npm run format'
 alias npm-dry='npm pack --dry-run'
 alias jsr-dry='jsr publish --dry-run'
+alias nibir='npm install && npm run build'
 
 alias serve='python3 -m http.server --bind 127.0.0.1'
 alias server='serve'
@@ -159,15 +160,11 @@ alias git-emails='git log --no-merges --pretty=format:"%ae" | stats'
 alias history-stats="history 0 | awk '{print \$2}' | stats | head"
 # Checks whether connection is up.
 alias net="ping google.com | grep -E --only-match --color=never '[0-9\.]+ ms'"
-alias untarbz2='tar -xvjf'
-alias untarxz='tar -xvf'
-alias hist='history 0 | grep' # for searching command history. `hist git`
+alias hist='history 0 | grep' # for searching command history. Usage: "hist git"
 alias remove-node-modules="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
 alias update-debian='sudo apt update && sudo apt upgrade -y && sudo apt dist-upgrade -y'
-alias update-mac='brew update && brew upgrade'
-alias logs='journalctl -fu'
-alias logs-all='journalctl -u'
 alias ctl='systemctl'
+alias jctl='journalctl'
 
 # ==================================================================
 # = Functions =
@@ -333,5 +330,8 @@ function tarxz() {
   outf="$1.tar.xz"
   XZ_OPT=-9 tar -Jcvjf "$outf" "$inf"
 }
+
+alias untarbz2='tar -xvjf'
+alias untarxz='tar -xvf'
 
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"

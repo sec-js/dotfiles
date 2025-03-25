@@ -12,7 +12,7 @@ The short URL expands to GitHub-hosted `install.sh`, which can be easily audited
 - **MacOS:** Ensure you have XCode or dev tools. It can be downloaded from the app store.
     - Optionally `sh etc/bootstrap-macos.sh`
 - **Linux and BSD:** Ensure you have `git` and `zsh` installed.
-- **MacOS terminal:** `terminal/monokai_pro_spectrum.terminal` (Settings -> Profiles -> Press "gear" -> Import).
+- **MacOS terminal:** `terminal/macos-term/monokai_pro_spectrum.terminal` (Settings -> Profiles -> Press "gear" -> Import).
 - **Git:** Don't forget to adjust `home/.gitconfig` or you'll have improper commit author
 
 ## Features
